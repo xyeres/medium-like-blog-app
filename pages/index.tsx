@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
+import Metatags from "../components/Metatags";
 
 import { firestore, postToJSON, fromMillis } from '../lib/firebase';
 import { useState } from 'react';
@@ -30,7 +31,7 @@ export default function Home(props) {
   const [loading, setLoading] = useState(false)
   const [postsEnd, setPostsEnd] = useState(false)
 
-  const getMostPosts = async () => {
+  const getMorePosts = async () => {
     setLoading(true)
     const last = posts[posts.length - 1];
 
@@ -54,9 +55,10 @@ export default function Home(props) {
   }
   return (
     <main>
+      <Metatags title="Awesome Post Feed of Dev.Feed" />
       <PostFeed admin={false} posts={posts} />
 
-      {!loading && !postsEnd && <button onClick={getMostPosts}>Load more</button>}
+      {!loading && !postsEnd && <button onClick={getMorePosts}>Load more</button>}
 
       <Loader show={loading} />
 
