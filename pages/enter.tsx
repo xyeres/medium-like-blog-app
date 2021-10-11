@@ -81,6 +81,9 @@ function UsernameForm() {
     const usernameRef = firestore.doc(`usernames/${formValue}`)
 
     // commit both docs together as a batch write
+    // this creates a firesetore transaction that will fail or succeed 
+    // entirely for both records
+
     const batch = firestore.batch();
     batch.set(userRef, { username: formValue, photoURL: user.photoURL, displayName: user.displayName })
     batch.set(usernameRef, { uid: user.uid });
