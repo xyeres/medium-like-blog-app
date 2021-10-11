@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import Loader from '../components/Loader';
-import toast from 'react-hot-toast';
 import Metatags from "../components/Metatags";
 
 import { firestore, postToJSON, fromMillis } from '../lib/firebase';
